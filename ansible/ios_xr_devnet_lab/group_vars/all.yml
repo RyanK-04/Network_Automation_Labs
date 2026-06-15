@@ -1,0 +1,30 @@
+---
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.iosxr.iosxr
+ansible_become: false
+
+# This lab deliberately avoids automatic config commits by default.
+lab_allow_changes: false
+
+# Structured intent used later by templates and resource modules.
+lab_owner: CNS4107
+lab_prefix: CNS4107_ANSIBLE
+
+ntp_servers:
+  - 10.10.0.10
+  - 10.10.0.11
+
+syslog_servers:
+  - 10.10.0.50
+
+lab_loopbacks:
+  - name: Loopback150
+    description: CNS4107 Ansible lab loopback - safe test
+    ip_address: 10.255.150.1
+    mask: 255.255.255.255
+
+lab_banner: |
+  ************************************************************
+  This device is used for CNS4107 Ansible automation practice.
+  Do not make disruptive changes on shared sandboxes.
+  ************************************************************
