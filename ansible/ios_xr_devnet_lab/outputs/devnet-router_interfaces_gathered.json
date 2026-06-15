@@ -1,0 +1,151 @@
+[
+    {
+        "description": "CUST-PORT: acme-corp - ORD-2026-0455 - 100G - lyon",
+        "enabled": true,
+        "mtu": 9216,
+        "name": "Bundle-Ether1"
+    },
+    {
+        "description": "CUST-PORT: WIBX - ORD-2026-0455 - 100G - paris",
+        "enabled": true,
+        "mtu": 9216,
+        "name": "Bundle-Ether2"
+    },
+    {
+        "description": "CUST-PORT: WIBX - ORD-2026-0456 - 100G - lyon",
+        "enabled": true,
+        "mtu": 9216,
+        "name": "Bundle-Ether3"
+    },
+    {
+        "description": "L2:FX0000:CYPRESS-EAST-LAB-MDF-SW01:ANE1740:192.168.10.10",
+        "enabled": true,
+        "name": "Bundle-Ether10"
+    },
+    {
+        "description": "CORP:FX0000:MGMT:CYPRESS-ENGINEERING-LAB:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether10.200"
+    },
+    {
+        "description": "HOME:FX0000:VOICE:CYPRESS-ENGINEERING-LAB:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether10.410"
+    },
+    {
+        "description": "HOME:FX0000:NONE-CGNAT-DATA:CYPRESS-ENGINEERING-LAB:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether10.551"
+    },
+    {
+        "description": "WORK:FX0000:DATA:CYPRESS-ENGINEERING-LAB:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether10.601"
+    },
+    {
+        "description": "HOME:FX0000:CGNAT-DATA:CYPRESS-ENGINEERING-LAB:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether10.901"
+    },
+    {
+        "description": "L3:TX-DFW-SIERRA-VISTA-CORE1:192.168.255.126",
+        "enabled": true,
+        "name": "Bundle-Ether301"
+    },
+    {
+        "description": "L2LAG:FX0000:OLT1:ANE1740:192.168.255.4",
+        "enabled": true,
+        "name": "Bundle-Ether401"
+    },
+    {
+        "description": "CORP:FX0000:MGMT:CYPRESS-ENGINEERING-LAB:OLT1:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether401.200"
+    },
+    {
+        "description": "HOME:FX0000:VOICE:CYPRESS-ENGINEERING-LAB:OLT1:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether401.410"
+    },
+    {
+        "description": "HOME:FX0000:NONE-CGNAT-DATA:CYPRESS-ENGINEERING-LAB:OLT1:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether401.551"
+    },
+    {
+        "description": "HOME:FX0000:CGNAT-DATA:CYPRESS-ENGINEERING-LAB:OLT1:ANE1740",
+        "enabled": true,
+        "name": "Bundle-Ether401.901"
+    },
+    {
+        "description": "CUST-PORT: customer_1 - order_id_1 - 100M - site_1",
+        "enabled": true,
+        "mtu": 9216,
+        "name": "Bundle-Ether12345"
+    },
+    {
+        "description": "CASE=NCP-01321012 Lo0 (from HLD)",
+        "enabled": true,
+        "name": "Loopback0"
+    },
+    {
+        "enabled": true,
+        "name": "Loopback2"
+    },
+    {
+        "enabled": true,
+        "name": "Loopback3"
+    },
+    {
+        "enabled": true,
+        "name": "Loopback4"
+    },
+    {
+        "enabled": true,
+        "name": "MgmtEth0/RP0/CPU0/0"
+    },
+    {
+        "description": "CASE=NCP-01321012 WAN (from HLD)",
+        "enabled": true,
+        "name": "GigabitEthernet0/0/0/0"
+    },
+    {
+        "description": "CASE=NCP-01321012 Data (from HLD)",
+        "enabled": true,
+        "name": "GigabitEthernet0/0/0/0.1"
+    },
+    {
+        "description": "CASE=NCP-01321012 Voice (from HLD)",
+        "enabled": true,
+        "name": "GigabitEthernet0/0/0/0.100"
+    },
+    {
+        "description": "to xrd-3 Gi0/0/0/1",
+        "enabled": true,
+        "name": "GigabitEthernet0/0/0/1"
+    },
+    {
+        "enabled": true,
+        "name": "MgmtEth0/RP1/CPU0/0"
+    },
+    {
+        "description": "CUST-PORT: acme-corp - ORD-2026-0455 - 100G - lyon",
+        "enabled": true,
+        "name": "HundredGigE0/0/0/1"
+    },
+    {
+        "description": "CUST-PORT: WIBX - ORD-2026-0455 - 100G - paris",
+        "enabled": true,
+        "name": "HundredGigE0/0/0/3"
+    },
+    {
+        "description": "CUST-PORT: WIBX - ORD-2026-0456 - 100G - lyon",
+        "enabled": true,
+        "name": "HundredGigE0/0/0/4"
+    },
+    {
+        "description": "CUST-PORT: WIBX - ORD-2026-0455 - 400G - fr-ogb",
+        "enabled": true,
+        "name": "FourHundredGigE0/0/0/4"
+    }
+]
