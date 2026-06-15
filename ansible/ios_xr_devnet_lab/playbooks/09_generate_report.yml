@@ -1,0 +1,22 @@
+---
+- name: Generate local Markdown report from inventory and variables
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure reports directory exists
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/../reports"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Render Markdown device report
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/device_report.md.j2"
+        dest: "{{ playbook_dir }}/../reports/{{ inventory_hostname }}_report.md"
+      delegate_to: localhost
+
+    - name: Show report file path
+      ansible.builtin.debug:
+        msg: "reports/{{ inventory_hostname }}_report.md"

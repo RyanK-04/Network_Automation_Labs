@@ -1,0 +1,22 @@
+---
+- name: Dry-run rendered loopback configuration against IOS XR
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure rendered config exists
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/loopbacks.j2"
+        dest: "{{ playbook_dir }}/../rendered/{{ inventory_hostname }}_loopbacks.cfg"
+      delegate_to: localhost
+
+    - name: Load rendered config in check mode
+      cisco.iosxr.iosxr_config:
+        lines: "{{ lookup('file', playbook_dir + '/../rendered/' + inventory_hostname + '_loopbacks.cfg') | split('\n') | reject('match', '^!') | reject('equalto', '') | list }}"
+        match: line
+      register: config_result
+      check_mode: true
+
+    - name: Show Ansible result summary
+      ansible.builtin.debug:
+        var: config_result

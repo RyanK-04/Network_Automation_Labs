@@ -1,0 +1,33 @@
+---
+- name: Apply loopback configuration only in approved reserved lab
+  hosts: all
+  gather_facts: false
+
+  pre_tasks:
+    - name: Refuse to change public sandbox unless explicitly enabled
+      ansible.builtin.fail:
+        msg: "lab_allow_changes is false. Use -e lab_allow_changes=true only in an approved reserved lab."
+      when: not lab_allow_changes | bool
+
+  tasks:
+    - name: Render loopback config locally
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/loopbacks.j2"
+        dest: "{{ playbook_dir }}/../rendered/{{ inventory_hostname }}_loopbacks.cfg"
+      delegate_to: localhost
+
+    - name: Apply loopback configuration
+      cisco.iosxr.iosxr_config:
+        lines: "{{ lookup('file', playbook_dir + '/../rendered/' + inventory_hostname + '_loopbacks.cfg') | split('\n') | reject('match', '^!') | reject('equalto', '') | list }}"
+        match: line
+      register: apply_result
+
+    - name: Verify loopback appears in interface output
+      cisco.iosxr.iosxr_command:
+        commands:
+          - show interfaces Loopback150 brief
+      register: verify_result
+
+    - name: Show verification output
+      ansible.builtin.debug:
+        var: verify_result.stdout_lines

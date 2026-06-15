@@ -1,0 +1,18 @@
+---
+- name: Run read-only show commands on IOS XR
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Run key operational commands
+      cisco.iosxr.iosxr_command:
+        commands:
+          - show version
+          - show interfaces brief
+          - show running-config formal | include hostname
+      register: show_output
+
+    - name: Print output command by command
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ show_output.stdout_lines }}"

@@ -1,0 +1,30 @@
+---
+- name: Render IOS XR configuration locally from Jinja2 templates
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure rendered directory exists
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/../rendered"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Render loopback configuration locally
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/loopbacks.j2"
+        dest: "{{ playbook_dir }}/../rendered/{{ inventory_hostname }}_loopbacks.cfg"
+      delegate_to: localhost
+
+    - name: Render management services configuration locally
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/management_services.j2"
+        dest: "{{ playbook_dir }}/../rendered/{{ inventory_hostname }}_management_services.cfg"
+      delegate_to: localhost
+
+    - name: Show where rendered files were created
+      ansible.builtin.debug:
+        msg:
+          - "rendered/{{ inventory_hostname }}_loopbacks.cfg"
+          - "rendered/{{ inventory_hostname }}_management_services.cfg"

@@ -1,0 +1,28 @@
+---
+- name: Backup running configuration from IOS XR
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure backup directory exists
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/../backups"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Fetch running configuration
+      cisco.iosxr.iosxr_command:
+        commands:
+          - show running-config
+      register: backup_result
+
+    - name: Save running config to file
+      ansible.builtin.copy:
+        content: "{{ backup_result.stdout[0] }}\n"
+        dest: "{{ playbook_dir }}/../backups/{{ inventory_hostname }}_running.cfg"
+      delegate_to: localhost
+
+    - name: Show backup location
+      ansible.builtin.debug:
+        msg: "Backup saved to backups/{{ inventory_hostname }}_running.cfg"

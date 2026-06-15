@@ -1,0 +1,21 @@
+---
+- name: Remove lab loopback configuration from reserved lab
+  hosts: all
+  gather_facts: false
+
+  pre_tasks:
+    - name: Refuse cleanup unless changes are enabled
+      ansible.builtin.fail:
+        msg: "Cleanup changes are disabled. Use -e lab_allow_changes=true only in an approved reserved lab."
+      when: not lab_allow_changes | bool
+
+  tasks:
+    - name: Remove Loopback150
+      cisco.iosxr.iosxr_config:
+        lines:
+          - no interface Loopback150
+      register: cleanup_result
+
+    - name: Show cleanup result
+      ansible.builtin.debug:
+        var: cleanup_result

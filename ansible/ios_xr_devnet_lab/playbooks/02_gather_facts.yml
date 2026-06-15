@@ -1,0 +1,30 @@
+---
+- name: Gather IOS XR facts and save them locally
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Gather minimum IOS XR facts
+      cisco.iosxr.iosxr_facts:
+        gather_subset:
+          - min
+      register: facts_result
+
+    - name: Create local output directory
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/../outputs"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Save facts as formatted JSON
+      ansible.builtin.copy:
+        content: "{{ facts_result.ansible_facts | to_nice_json }}\n"
+        dest: "{{ playbook_dir }}/../outputs/{{ inventory_hostname }}_facts.json"
+      delegate_to: localhost
+
+    - name: Show selected facts
+      ansible.builtin.debug:
+        msg:
+          hostname: "{{ facts_result.ansible_facts.ansible_net_hostname | default('unknown') }}"
+          version: "{{ facts_result.ansible_facts.ansible_net_version | default('unknown') }}"
