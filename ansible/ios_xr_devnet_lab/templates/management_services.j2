@@ -1,0 +1,13 @@
+! Management services rendered from structured YAML data
+!
+{% for server in ntp_servers | sort %}
+ntp server {{ server }}
+{% endfor %}
+!
+{% for server in syslog_servers | default([]) %}
+logging hostnameprefix {{ server }}
+{% endfor %}
+!
+banner motd #
+{{ lab_banner }}
+#
