@@ -1,0 +1,13 @@
+! ============================================================
+! Rendered by Ansible from templates/loopbacks.j2
+! Device : {{ inventory_hostname }}
+! Site : {{ site | default('unknown') }}
+! Do not paste into production without review.
+! ============================================================
+!
+{% for lb in lab_loopbacks %}
+interface {{ lb.name }}
+ description {{ lb.description }}
+ ipv4 address {{ lb.ip_address }} {{ lb.mask }}
+!
+{% endfor %}
