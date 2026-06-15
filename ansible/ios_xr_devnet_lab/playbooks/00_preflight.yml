@@ -1,0 +1,24 @@
+---
+- name: Preflight checks for the Ansible Linux/macOS DevNet lab
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Show selected inventory variables
+      ansible.builtin.debug:
+        msg:
+          host: "{{ inventory_hostname }}"
+          ansible_host: "{{ ansible_host }}"
+          connection: "{{ ansible_connection }}"
+          network_os: "{{ ansible_network_os }}"
+          lab_allow_changes: "{{ lab_allow_changes }}"
+
+    - name: Run a harmless IOS XR command
+      cisco.iosxr.iosxr_command:
+        commands:
+          - show clock
+      register: clock_output
+
+    - name: Display device clock output
+      ansible.builtin.debug:
+        var: clock_output.stdout_lines
