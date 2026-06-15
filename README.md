@@ -17,7 +17,6 @@ The repository serves as a portfolio of automation exercises using Cisco technol
 - Cisco IOS XR
 - Cisco DevNet Sandbox
 - Linux
-- macOS
 
 ---
 
