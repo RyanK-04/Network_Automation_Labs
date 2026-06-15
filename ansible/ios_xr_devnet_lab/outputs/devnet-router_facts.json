@@ -1,0 +1,12 @@
+{
+    "ansible_net_api": "cliconf",
+    "ansible_net_gather_network_resources": [],
+    "ansible_net_gather_subset": [
+        "default"
+    ],
+    "ansible_net_hostname": "NetGuard",
+    "ansible_net_python_version": "3.12.3",
+    "ansible_net_system": "iosxr",
+    "ansible_net_version": "25.3.1 LNT",
+    "ansible_network_resources": {}
+}
