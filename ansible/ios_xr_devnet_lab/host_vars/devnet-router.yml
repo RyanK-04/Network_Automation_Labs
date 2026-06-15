@@ -1,0 +1,12 @@
+---
+ansible_hostname_expected: sandbox-iosxr-1.cisco.com
+
+management_protocols:
+  ssh: 22
+  netconf: 830
+  restconf: 443
+
+report_tags:
+  course: CNS4107
+  lab: ansible-linux-macos-devnet
+  environment: public-sandbox
