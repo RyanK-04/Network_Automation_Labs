@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains hands-on network automation labs and projects demonstrating practical experience with infrastructure automation, configuration management, and network programmability.
+This repository contains hands-on network automation labs and projects demonstrating practical experience with infrastructure automation, configuration management and network programmability.
 
 The repository serves as a portfolio of automation exercises using Cisco technologies and open-source automation tools.
 
@@ -60,4 +60,4 @@ The purpose of this repository is to document my network automation learning jou
 
 ## Disclaimer
 
-This repository contains my own automation scripts, templates, and notes created for educational and portfolio purposes. Cisco and related product names are trademarks of their respective owners.
+This repository contains my own automation scripts, templates and notes created for educational and portfolio purposes. Cisco and related product names are trademarks of their respective owners.
