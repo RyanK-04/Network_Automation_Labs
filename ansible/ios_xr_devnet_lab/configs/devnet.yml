@@ -1,0 +1,16 @@
+---
+all:
+  hosts:
+    devnet-router:
+      ansible_host: sandbox-iosxr-1.cisco.com
+      ansible_user: {sandbox_username}
+      ansible_password: {sandbox_password}
+      ansible_port: 22
+      ansible_network_os: cisco.iosxr.iosxr
+      ansible_connection: ansible.netcommon.network_cli
+      restconf_port: 443
+      netconf_port: 830
+
+  vars:
+    ansible_paramiko_look_for_keys: false
+    ansible_host_key_checking: false
